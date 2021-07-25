@@ -3,15 +3,32 @@ import { JSDOM } from "jsdom";
 const { window } = new JSDOM()
 const algorithms = new Algorithms();
 
-describe("all algorithms test set", () => {
+const data = [
+    {
+        list1: ['a', 'b', 'c', 'd'],
+        list2: ['g', 'f', 'a', 'g'],
+        result: true
+    },
+    {
+        list1: ['a', 'b', 'c', 'd'],
+        list2: ['g', 'f', 'a', 'g'],
+        result: true
+    },
+    {
+        list1: ['a', 'b', 'c', 'd'],
+        list2: ['g', 'f', 'a', 'g'],
+        result: true
+    },
+  ];
+
+describe.each(data)("all algorithms test set", (testData) => {
     describe("find Common Elements in 2 array", () => {
-        const list1 = ['a', 'b', 'c', 'd'];
-        const list2 = ['g', 'f', 'a', 'g'];
+
         test("findCommonElements1 with 2 array", () => {
-            expect(algorithms.findCommonElements(list1, list2)).toEqual(true);
+            expect(algorithms.findCommonElements(testData.list1, testData.list2)).toEqual(testData.result);
         });
         test("findCommonElements2 with 2 array", () => {
-            expect(algorithms.findCommonElements2(list1, list2)).toEqual(true);
+            expect(algorithms.findCommonElements2(testData.list1, testData.list2)).toEqual(testData.result);
         });
     });
 
