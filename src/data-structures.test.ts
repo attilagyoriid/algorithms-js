@@ -1,4 +1,4 @@
-import MyLinkedList from "./data_structures/MySignlyLinkedList";
+import MyLinkedList from "./data_structures/MySinglyLinkedList";
 import { JSDOM } from "jsdom";
 const { window } = new JSDOM()
 
