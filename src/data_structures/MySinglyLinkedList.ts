@@ -67,7 +67,7 @@ class MyLinkedList {
       return this.printList();
     }
     traverseToIndex(index: number): Node {
-      //Check parameters
+
       let counter = 0;
       let currentNode = this.head;
       while(counter !== index){
@@ -77,11 +77,31 @@ class MyLinkedList {
       return currentNode;
     }
     remove(index: number) {
-      // Check Parameters      
+
       const leader = this.traverseToIndex(index-1);
       const unwantedNode = leader.next as Node;
       leader.next = unwantedNode.next;
       this.length--;
+      return this.printList();
+    }
+
+    reverse() {
+      if (!this.head.next) {
+        return this.head;
+      }
+      let first = this.head;
+      this.tail = this.head;
+      let second = first.next;
+  
+      while(second) {
+        const temp = second.next;
+        second.next = first;
+        first = second;
+        second = temp;
+      }
+  
+      this.head.next = null;
+      this.head = first;
       return this.printList();
     }
   }
