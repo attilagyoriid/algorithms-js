@@ -5,6 +5,13 @@ import { factorial, fibonacci } from "./algorithms/Recursion";
 import FizzBuzz from "./algorithms/FizzBuzz";
 import Sorting from "./algorithms/Sorting";
 import { JSDOM } from "jsdom";
+import ArrayChunk from "./algorithms/ArrayChunk";
+import Anagrams from "./algorithms/Anagrams";
+import Steps from "./algorithms/Steps";
+import Pyramid from "./algorithms/Pyramid";
+import Vowels from "./algorithms/Vowels";
+import Wave from "./algorithms/Wave";
+import MyQueue from "./data_structures/MyQueue";
 
 const { window } = new JSDOM();
 
@@ -96,5 +103,192 @@ describe("fizz buzz division by 3 and 5 or both", () => {
 
   test("fizzbuzz", () => {
     console.log(fizzbuzz.doFizzBuzz(1, 100));
+  });
+});
+
+describe("Array chunks algorithms", () => {
+  const arrayChunk = new ArrayChunk();
+  test("chunk divides an array of 10 elements with chunk size 2", () => {
+    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const chunked = arrayChunk.chunk(arr, 2);
+
+    expect(chunked).toEqual([
+      [1, 2],
+      [3, 4],
+      [5, 6],
+      [7, 8],
+      [9, 10],
+    ]);
+  });
+
+  test("chunk divides an array of 3 elements with chunk size 1", () => {
+    const arr = [1, 2, 3];
+    const chunked = arrayChunk.chunk(arr, 1);
+
+    expect(chunked).toEqual([[1], [2], [3]]);
+  });
+
+  test("chunk divides an array of 5 elements with chunk size 3", () => {
+    const arr = [1, 2, 3, 4, 5];
+    const chunked = arrayChunk.chunk(arr, 3);
+
+    expect(chunked).toEqual([
+      [1, 2, 3],
+      [4, 5],
+    ]);
+  });
+
+  test("chunk divides an array of 13 elements with chunk size 5", () => {
+    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+    const chunked = arrayChunk.chunk(arr, 5);
+
+    expect(chunked).toEqual([
+      [1, 2, 3, 4, 5],
+      [6, 7, 8, 9, 10],
+      [11, 12, 13],
+    ]);
+  });
+
+  test("chunk2 divides an array of 10 elements with chunk size 2", () => {
+    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const chunked = arrayChunk.chunk2(arr, 2);
+
+    expect(chunked).toEqual([
+      [1, 2],
+      [3, 4],
+      [5, 6],
+      [7, 8],
+      [9, 10],
+    ]);
+  });
+
+  test("chunk2 divides an array of 3 elements with chunk size 1", () => {
+    const arr = [1, 2, 3];
+    const chunked = arrayChunk.chunk2(arr, 1);
+
+    expect(chunked).toEqual([[1], [2], [3]]);
+  });
+
+  test("chunk2 divides an array of 5 elements with chunk size 3", () => {
+    const arr = [1, 2, 3, 4, 5];
+    const chunked = arrayChunk.chunk2(arr, 3);
+
+    expect(chunked).toEqual([
+      [1, 2, 3],
+      [4, 5],
+    ]);
+  });
+
+  test("chunk2 divides an array of 13 elements with chunk size 5", () => {
+    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+    const chunked = arrayChunk.chunk2(arr, 5);
+
+    expect(chunked).toEqual([
+      [1, 2, 3, 4, 5],
+      [6, 7, 8, 9, 10],
+      [11, 12, 13],
+    ]);
+  });
+});
+
+describe("Anagrams", () => {
+  const anagrams = new Anagrams();
+
+  test("Anagram1", () => {
+    console.log(anagrams.anagram("hello", "holle"));
+  });
+});
+
+describe("Steps", () => {
+  const steps = new Steps();
+  beforeEach(() => {
+    jest.spyOn(console, "log");
+  });
+  test("steps 1", () => {
+    const expected: string[] = [
+      "#                   ",
+      "##                  ",
+      "###                 ",
+      "####                ",
+      "#####               ",
+      "######              ",
+      "#######             ",
+      "########            ",
+      "###########         ",
+      "############        ",
+      "###############     ",
+      "################    ",
+      "#################   ",
+      "##################  ",
+      "################### ",
+      "####################",
+    ];
+    expect(steps.steps(20)).toEqual(expect.arrayContaining(expected));
+  });
+
+  // afterEach(() => {
+  //   console.log.mockRestore();
+  // });
+
+  // test("steps is a function", () => {
+  //   expect(typeof steps).toEqual("function");
+  // });
+
+  // test("steps called with n = 1", () => {
+  //   steps(1);
+  //   expect(console.log.mock.calls[0][0]).toEqual("#");
+  //   expect(console.log.mock.calls.length).toEqual(1);
+  // });
+
+  // test("steps called with n = 2", () => {
+  //   steps(2);
+  //   expect(console.log.mock.calls[0][0]).toEqual("# ");
+  //   expect(console.log.mock.calls[1][0]).toEqual("##");
+  //   expect(console.log.mock.calls.length).toEqual(2);
+  // });
+
+  // test("steps called with n = 3", () => {
+  //   steps(3);
+  //   expect(console.log.mock.calls[0][0]).toEqual("#  ");
+  //   expect(console.log.mock.calls[1][0]).toEqual("## ");
+  //   expect(console.log.mock.calls[2][0]).toEqual("###");
+  //   expect(console.log.mock.calls.length).toEqual(3);
+  // });
+});
+
+describe("Pyramid", () => {
+  const pyramid = new Pyramid();
+
+  test("Pyramid recursive", () => {
+    console.log(pyramid.pyramidRecursion(4));
+  });
+});
+
+describe("Vowel", () => {
+  const vowels = new Vowels();
+
+  test("Pyramid recursive", () => {
+    console.log(vowels.getVowels("Attila"));
+  });
+});
+
+describe("Wave", () => {
+  const vowels = new Vowels();
+
+  test("Wave", () => {
+    const wave = new Wave();
+
+    const sourceOne = new MyQueue();
+    sourceOne.enqueue("a");
+    sourceOne.enqueue("c");
+    sourceOne.enqueue("e");
+    sourceOne.enqueue("g");
+
+    const sourceTwo = new MyQueue();
+    sourceTwo.enqueue("b");
+    sourceTwo.enqueue("d");
+    sourceTwo.enqueue("f");
+    sourceTwo.enqueue("h");
+    console.log(wave.weave(sourceOne, sourceTwo));
   });
 });
