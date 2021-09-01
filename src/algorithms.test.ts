@@ -12,6 +12,7 @@ import Pyramid from "./algorithms/Pyramid";
 import Vowels from "./algorithms/Vowels";
 import Wave from "./algorithms/Wave";
 import MyQueue from "./data_structures/MyQueue";
+import Fibonacci from "./algorithms/Fibonacci";
 
 const { window } = new JSDOM();
 
@@ -290,5 +291,16 @@ describe("Wave", () => {
     sourceTwo.enqueue("f");
     sourceTwo.enqueue("h");
     console.log(wave.weave(sourceOne, sourceTwo));
+  });
+});
+
+describe("Fibonacci", () => {
+  const fibonacci = new Fibonacci();
+
+  test("Fibonacci interation", () => {
+    expect(fibonacci.fib_loop(6)).toEqual(8);
+  });
+  test("Fibonacci recursive", () => {
+    expect(fibonacci.fib_recrusive(6)).toEqual(8);
   });
 });
