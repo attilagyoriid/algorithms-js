@@ -13,6 +13,7 @@ import Vowels from "./algorithms/Vowels";
 import Wave from "./algorithms/Wave";
 import MyQueue from "./data_structures/MyQueue";
 import Fibonacci from "./algorithms/Fibonacci";
+import TrappingRainWater from "./algorithms/TrappingRainWater";
 
 const { window } = new JSDOM();
 
@@ -54,6 +55,15 @@ describe.each(data)("all algorithms test set", (testData) => {
     const sum = 18;
     test("hasPairInListWithSum", () => {
       expect(arrayManipulation.hasPairInListWithSum(list, sum)).toEqual(true);
+    });
+  });
+
+  describe("trap rain water", () => {
+    const list = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1];
+    const expected = 6;
+    test("trapped rainwater amount is 6", () => {
+      const trappingRainWater = new TrappingRainWater();
+      expect(trappingRainWater.getRainWaterAmount(list)).toBe(expected);
     });
   });
 });
@@ -302,5 +312,13 @@ describe("Fibonacci", () => {
   });
   test("Fibonacci recursive", () => {
     expect(fibonacci.fib_recrusive(6)).toEqual(8);
+  });
+});
+
+describe("sorting", () => {
+  const sorting = new Sorting();
+  const list = [43, 44, 6, 2, 1, 5, 50, 8, 12, 41, 1];
+  test("counting sort", () => {
+    console.log("counting sort result: ", sorting.counting(list));
   });
 });
